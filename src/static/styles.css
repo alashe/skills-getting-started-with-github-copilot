@@ -63,6 +63,8 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  /* ensure card allows inner list spacing */
+  overflow: visible;
 }
 
 .activity-card h4 {
@@ -74,26 +76,96 @@ section h3 {
   margin-bottom: 8px;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
+/* Participants section inside activity cards */
+.activity-card .participants {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #eee;
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+.activity-card .participants h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #20306b;
+  font-weight: 600;
 }
 
-button {
+/* Bulleted list styling made compact and pretty */
+
+.activity-card .participants ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.activity-card .participants ul.no-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+.delete-participant-btn {
+  background: none;
+  border: none;
+  color: #c62828;
+  font-size: 18px;
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+.delete-participant-btn:hover {
+  background: #ffeaea;
+  color: #a31515;
+}
+
+.activity-card .participants li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Small round badge (initials / avatar placeholder) */
+.activity-card .participant-badge {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Participant name text */
+.activity-card .participant-name {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 40px);
+}
+
+/* If there are many participants, show a subtle fade at the bottom (for modern browsers) */
+.activity-card .participants ul::after {
+  content: "";
+  pointer-events: none;
+  display: block;
+  height: 18px;
+  margin-top: -18px;
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+.button {
   background-color: #1a237e;
   color: white;
   border: none;
@@ -104,7 +176,7 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
+.button:hover {
   background-color: #3949ab;
 }
 
@@ -141,4 +213,10 @@ footer {
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+
+@media (max-width: 480px) {
+  .activity-card .participant-badge { width: 24px; height: 24px; font-size: 11px; }
+  .activity-card .participants h5 { font-size: 13px; }
+  .activity-card .participants li { font-size: 13px; gap: 8px; }
 }
