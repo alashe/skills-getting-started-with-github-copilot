@@ -92,12 +92,33 @@ section h3 {
 }
 
 /* Bulleted list styling made compact and pretty */
+
 .activity-card .participants ul {
-  list-style: disc;
+  list-style: none;
   margin: 0;
-  padding-left: 20px; /* keeps bullets aligned */
+  padding-left: 0;
   max-height: 160px;
   overflow: auto;
+}
+
+.activity-card .participants ul.no-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+.delete-participant-btn {
+  background: none;
+  border: none;
+  color: #c62828;
+  font-size: 18px;
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+.delete-participant-btn:hover {
+  background: #ffeaea;
+  color: #a31515;
 }
 
 .activity-card .participants li {
